@@ -19,16 +19,22 @@ ActiveRecord::Schema.define(version: 20191102013922) do
     t.float "grade"
     t.bigint "course_id"
     t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_course_students_on_course_id"
     t.index ["student_id"], name: "index_course_students_on_student_id"
   end
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "students", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "course_students", "courses"
