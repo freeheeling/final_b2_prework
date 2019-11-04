@@ -1,8 +1,8 @@
 <h2> <%= @course.name %>: Enrolled Students and Grades</h2>
 
-<% @course.rank_grades.each do |student| %>
-  <section id='student-<%= student.id %>'>
-    <p>Student: <%= student.name %></p>
-    <p>Grade: <%= student.grade(@course) %></p>
+<% @course.order_grades.each_with_index do |course_student, index| %>
+  <section id='student-<%= course_student.student.id %>'>
+    <p>Student: <%= course_student.student.name %></p>
+    <p>Grade: <%= course_student.grade %></p>
   </section><br>
 <% end %>

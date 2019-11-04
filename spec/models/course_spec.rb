@@ -11,7 +11,7 @@ RSpec.describe Course, type: :model do
   end
 
   describe 'instance methods' do
-    it 'rank_grades' do
+    it 'order grades' do
       art = Course.create!(name: 'Art')
 
       bob = Student.create!(name: 'Bob')
@@ -22,9 +22,9 @@ RSpec.describe Course, type: :model do
       art_dan = CourseStudent.create!(course: art, student: dan, grade: 3.8)
       art_lou = CourseStudent.create!(course: art, student: lou, grade: 3.6)
 
-      expect(art.rank_grades[0]).to eq(dan)
-      expect(art.rank_grades[1]).to eq(lou)
-      expect(art.rank_grades[2]).to eq(bob)
+      expect(art.order_grades[2]).to eq(art_bob)
+      expect(art.order_grades[0]).to eq(art_dan)
+      expect(art.order_grades[1]).to eq(art_lou)
     end
   end
 end
