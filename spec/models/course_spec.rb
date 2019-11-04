@@ -22,7 +22,9 @@ RSpec.describe Course, type: :model do
       art_dan = CourseStudent.create!(course: art, student: dan, grade: 3.8)
       art_lou = CourseStudent.create!(course: art, student: lou, grade: 3.6)
 
-      expect(art.rank_grades).to eq([dan, lou, bob])
+      expect(art.rank_grades[0]).to eq(dan)
+      expect(art.rank_grades[1]).to eq(lou)
+      expect(art.rank_grades[2]).to eq(bob)
     end
   end
 end
