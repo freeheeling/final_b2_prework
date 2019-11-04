@@ -13,7 +13,7 @@ RSpec.describe Student, type: :model do
   describe 'instance methods' do
     it 'grade' do
       art = Course.create!(name: 'Art')
-      bob = Student.create!(name: 'Tom')
+      bob = Student.create!(name: 'Bob')
       art_bob = CourseStudent.create!(course: art, student: bob, grade: 3.8)
 
       expect(bob.grade(art)).to eq(art_bob.grade)
