@@ -80,15 +80,7 @@ RSpec.describe 'Course Show Page' do
       expect(page).to have_content("Grade: #{music_dan.grade}")
     end
 
-    within "#course-#{art.id}" do
-      expect(page).to have_content("Course: #{art.name}")
-      expect(page).to have_content("Grade: #{art_dan.grade}")
-    end
+    expect(page).to_not have_content("Course: #{art.name}")
+    expect(page).to_not have_content("Grade: #{art_dan.grade}")
   end
 end
-
-# As a user,
-# When I visit a course show page,
-# Then I see a button 'unenroll' next to each student's name
-# When I click this button,
-# Then I am redirected to that student's show page where I do not see the course listed
