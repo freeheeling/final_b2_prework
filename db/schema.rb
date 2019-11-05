@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20191102013922) do
   enable_extension "plpgsql"
 
   create_table "course_students", force: :cascade do |t|
-    t.float "grade"
+    t.float "grade", default: 4.0
     t.bigint "course_id"
     t.bigint "student_id"
     t.datetime "created_at", null: false
