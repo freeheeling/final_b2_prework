@@ -1,9 +1,9 @@
 class CourseStudentsController < ApplicationController
 
   def create
-    Course.create(course_params)
-    Student.create(student_params)
-    course_student = CourseStudent.create(course_student_params)
+    course = Course.create(course_params)
+    student = Student.create(student_params)
+    course_student = CourseStudent.create(course_id: course.id, student_id: student.id)
     redirect_to student_path(course_student.student.id)
   end
 

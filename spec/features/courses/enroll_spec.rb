@@ -23,11 +23,3 @@ RSpec.describe 'Course Enrollment' do
     end
   end
 end
-#
-# When I visit a course show page,
-# Then I see a form to enroll a new student in this course that has a single input field for the student name.
-# When I type in the name of a student
-# And I click the submit button
-# Then a new student is created,
-# And I am redirected to that student's show page where I see the course listed
-# (no need for sad path testing i.e. name field is left blank, if the name already exists)
