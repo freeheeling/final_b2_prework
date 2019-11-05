@@ -55,6 +55,36 @@ RSpec.describe 'Course Show Page' do
       expect(page).to have_button('Unenroll')
     end
   end
+
+  it 'clicking the unenroll button redirects to that student show page where the course is not listed' do
+    art = Course.create!(name: 'Art')
+    music = Course.create!(name: 'music')
+
+    dan = Student.create!(name: 'Dan')
+
+    art_dan = CourseStudent.create!(course: art, student: dan, grade: 3.8)
+    music_dan = CourseStudent.create!(course: music, student: dan, grade: 3.4)
+
+    visit course_path(art.id)
+
+    within "#student-#{dan.id}" do
+      expect(page).to have_content("Student: #{dan.name}")
+      expect(page).to have_content("Grade: #{art_dan.grade}")
+      click_button 'Unenroll'
+    end
+
+    expect(current_path).to eq(student_path(dan.id))
+
+    within "#course-#{music.id}" do
+      expect(page).to have_content("Course: #{music.name}")
+      expect(page).to have_content("Grade: #{music_dan.grade}")
+    end
+
+    within "#course-#{art.id}" do
+      expect(page).to have_content("Course: #{art.name}")
+      expect(page).to have_content("Grade: #{art_dan.grade}")
+    end
+  end
 end
 
 # As a user,
